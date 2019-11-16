@@ -6,6 +6,6 @@ const server = express();
 
 server.use(express.json());
 
-server.use('/cars', carRouter);
+server.use('/data/cars', carRouter);
 
 module.exports = server;

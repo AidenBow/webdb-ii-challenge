@@ -22,4 +22,24 @@ router.get("/", (req, res) => {
     })
 })
 
+router.put("/:id", (req, res) => {
+  db("cars").where("ID", req.params.id).update(req.body)
+    .then(car => {
+      res.json(car)
+    })
+    .catch(err => {
+      res.status(500).json({message: "server error", error: err})
+    })
+})
+
+router.delete("/:id", (req, res) => {
+  db("cars").where("ID", req.params.id).del()
+    .then(car => {
+      res.json(car)
+    })
+    .catch(err => {
+      res.status(500).json({message: "server error", error: err})
+    })
+})
+
 module.exports = router;
